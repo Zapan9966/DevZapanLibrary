@@ -1,0 +1,122 @@
+﻿<z:ZapWindow x:Class="DevZapanLibrary.MainWindow"
+             x:Name="mWindow"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:local="clr-namespace:DevZapanLibrary"
+                    xmlns:m="clr-namespace:DevZapanLibrary.Models"
+                    xmlns:z="clr-namespace:ZapanControls.Controls;assembly=ZapanControls"
+                    xmlns:converters="clr-namespace:DevZapanLibrary.Converters"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    mc:Ignorable="d"
+                    Title="MainWindow" Height="200" Width="200"
+                    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+                    Loaded="Window_Loaded"
+                    Background="White"
+                    WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <z:ZapScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" ScrollBarHeight="30" ScrollBarWidth="40">
+            <StackPanel >
+                <Button Content="Button" Width="300" />
+                <Button Content="Button" Width="300" />
+                <Button Content="Button" Width="300" />
+                <Button Content="Button" Width="300" />
+                <Button Content="Button" Width="300" />
+                <Button Content="Button" Width="300" />
+                <Button Content="Button" Width="300" />
+                <Button Content="Button" Width="300" />
+                <Button Content="Button" Width="300" />
+                <Button Content="Button" Width="300" />
+            </StackPanel>
+        </z:ZapScrollViewer>
+
+        <!--<Menu>
+            <z:ZapMenuItem Header="MenuItem 1" IsEnabled="False"/>
+            <z:ZapMenuItem Header="MenuItem 2">
+                <z:ZapMenuItem Header="MenuItem 1" IsCheckable="True" IsChecked="True"/>
+                <z:ZapMenuItem Header="MenuItem 2">
+                    <z:ZapMenuItem.Icon>
+                        <Image Source="acoustic_guitar.png"/>
+                    </z:ZapMenuItem.Icon>
+                </z:ZapMenuItem>
+                <z:ZapMenuItem Header="MenuItem 3"/>
+            </z:ZapMenuItem>
+            <z:ZapMenuItem Header="MenuItem 2">
+                <z:ZapMenuItem Header="MenuItem 1" IsCheckable="True" IsChecked="True"/>
+                <z:ZapMenuItem Header="MenuItem 2">
+                    <z:ZapMenuItem Header="MenuItem 1"/>
+                    <z:ZapMenuItem Header="MenuItem 2">
+                        <z:ZapMenuItem Header="MenuItem 1"/>
+                        <z:ZapMenuItem Header="MenuItem 2"/>
+                    </z:ZapMenuItem>
+                </z:ZapMenuItem>
+                <z:ZapMenuItem Header="MenuItem 3"/>
+            </z:ZapMenuItem>
+        </Menu>-->
+
+        <StackPanel Grid.Row="0" Margin="20">
+            <!--<Path x:Name="DefaultPath" Width="20" Height="20"
+						      VerticalAlignment="Top"
+						      Data="M0,0 10,5 0,10 Z"
+						      Fill="Gray"
+						      Stretch="Fill" />-->
+
+
+            <!--<ComboBox ItemsSource="{Binding Users}" Text="Mr Toto" SelectedValuePath="N_User" Width="207" Padding="5,1" IsEditable="True" IsReadOnly="True">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Prenom}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Nom}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>-->
+
+        </StackPanel> 
+
+        <!--<z:ZapSplitButton Content="Test" Foreground="White" />-->
+
+
+        <!--<DataGrid ItemsSource="{Binding Echanges}" AutoGenerateColumns="False" HeadersVisibility="All">
+        </DataGrid>-->
+
+        <!--<z:ZapListView x:Name="lvEchanges" ItemsSource="{Binding Echanges}">-->
+        <!--<z:ZapListView x:Name="lvEchanges">
+            <z:ZapListView.View>
+                <GridView>
+                    <z:ZapGridViewColumn Header="Service" DisplayMemberBinding="{Binding Service}" SearchType="ComboBox" ComboBoxSource="Services"/>
+                    <z:ZapGridViewColumn Header="Client" DisplayMemberBinding="{Binding N_Client, Converter={converters:ClientConverter}}" SearchType="Text" />
+                    <z:ZapGridViewColumn Header="Nom d'usage" DisplayMemberBinding="{Binding N_Client, Converter={converters:ClientNomUsageConverter}}" SearchType="Text" />
+                    <z:ZapGridViewColumn Header="Site client" DisplayMemberBinding="{Binding N_SiteClient, Converter={converters:SiteClientConverter}}" SearchType="Text" />
+                    <z:ZapGridViewColumn Header="Site client" DisplayMemberBinding="{Binding N_SiteClient, Converter={converters:SiteClientConverter}}" SearchType="Date" />
+                </GridView>
+            </z:ZapListView.View>
+        </z:ZapListView>-->
+
+        <!--<z:ZapDataGrid x:Name="dgEchanges" ItemsSource="{Binding Echanges}" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False">
+            --><!--<z:ZapDataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <TextBlock Text="Détails !" />
+                </DataTemplate>
+            </z:ZapDataGrid.RowDetailsTemplate>--><!--
+            <z:ZapDataGrid.Columns>
+                <z:ZapDataGridColumn Header="N° Echange" Binding="{Binding N_Echange}" CanFilter="True" SortDirection="Descending" />
+                <z:ZapDataGridColumn Header="Service" Binding="{Binding Service}" DataType="ComboBox" CanFilter="True" ComboBoxSource="Services" />
+                <z:ZapDataGridColumn Header="Date création" Binding="{Binding DateCreation, StringFormat='dd/MM/yyyy HH:mm'}" />
+                <z:ZapDataGridColumn Header="Titre" Binding="{Binding Titre}" CanFilter="True" />
+                <z:ZapDataGridColumn Header="Typologie" Binding="{Binding N_Typologie, Converter={converters:TypologieConverter}}" DataType="ComboBox" CanFilter="True" ComboBoxSource="Typologies" ComboBoxDisplayMemberPath="Nom" />
+                <z:ZapDataGridColumn Header="Client" Binding="{Binding N_Client, Converter={converters:ClientConverter}}" CanFilter="True" />
+            </z:ZapDataGrid.Columns>
+            
+        </z:ZapDataGrid>-->  
+        
+    </Grid>
+</z:ZapWindow>
