@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CA2002: Ne pas définir de verrou sur les objets à identité faible
+dotnet_diagnostic.CA2002.severity = none

@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.0.0\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props" Condition="Exists('..\..\OceaCRM_v2\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.0.0\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" />
+  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.3.0.0\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\..\OceaCRM_v2\packages\Microsoft.NetFramework.Analyzers.3.0.0\build\Microsoft.NetFramework.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.NetCore.Analyzers.3.0.0\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('..\..\OceaCRM_v2\packages\Microsoft.NetCore.Analyzers.3.0.0\build\Microsoft.NetCore.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeQuality.Analyzers.3.0.0\build\Microsoft.CodeQuality.Analyzers.props" Condition="Exists('..\..\OceaCRM_v2\packages\Microsoft.CodeQuality.Analyzers.3.0.0\build\Microsoft.CodeQuality.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.0.0\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props" Condition="Exists('..\..\OceaCRM_v2\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.0.0\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E29BF49A-C370-4EB3-B96A-1BFB68FF0C69}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>ZapanControls</RootNamespace>
+    <AssemblyName>ZapanControls</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.15.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\Dll SQLite\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Behaviours\BoundGridViewColumn.cs" />
+    <Compile Include="Behaviours\BrowserBehavior.cs" />
+    <Compile Include="Behaviours\EventToCommandBehavior.cs" />
+    <Compile Include="Behaviours\GridViewColumnResize.cs" />
+    <Compile Include="Behaviours\IgnoreMouseWheelBehavior.cs" />
+    <Compile Include="Behaviours\InvokeDelegateCommandAction.cs" />
+    <Compile Include="Behaviours\ScrollAnimationBehaviour.cs" />
+    <Compile Include="Behaviours\TextBoxInputRegExBehaviour.cs" />
+    <Compile Include="Controls\Primitives\ZapSplitButtonBase.cs" />
+    <Compile Include="Controls\Primitives\ZapToggleButtonBase.cs" />
+    <Compile Include="Controls\UniformWrapPanel.cs" />
+    <Compile Include="Controls\Primitives\ZapButtonBase.cs" />
+    <Compile Include="Controls\ZapButtonFlat.cs" />
+    <Compile Include="Controls\ZapButtonGlass.cs" />
+    <Compile Include="Controls\ZapButtonRound.cs" />
+    <Compile Include="Controls\ZapContextMenu.cs" />
+    <Compile Include="Controls\ZapDataGrid.cs" />
+    <Compile Include="Controls\ZapDataGridColumn.cs" />
+    <Compile Include="Controls\ZapLoadingIndicator.cs" />
+    <Compile Include="Controls\ZapMenuItem.cs" />
+    <Compile Include="Controls\ZapScrollBar.cs" />
+    <Compile Include="Controls\ZapScrollViewer.cs" />
+    <Compile Include="Controls\ZapSplitButtonGlass.cs" />
+    <Compile Include="Controls\ZapTabItemAdd.cs" />
+    <Compile Include="Controls\ZapToggleButtonFlat.cs" />
+    <Compile Include="Controls\ZapToggleButtonGlass.cs" />
+    <Compile Include="Controls\ZapToggleButtonRound.cs" />
+    <Compile Include="Controls\ZapUserControl.cs" />
+    <Compile Include="Controls\ZapWindow.cs" />
+    <Compile Include="Converters\BooleanToWidthConverter.cs" />
+    <Compile Include="Converters\ColorBrithnessConverter.cs" />
+    <Compile Include="Converters\ComparisonConverter.cs" />
+    <Compile Include="Converters\IsValidConverter.cs" />
+    <Compile Include="Converters\MathConverter.cs" />
+    <Compile Include="Converters\SolidColorBrushToColor.cs" />
+    <Compile Include="Databases\DbBase.cs" />
+    <Compile Include="Databases\MSSQL\MsSqlDatabase.cs" />
+    <Compile Include="Databases\MYSQL\MySqlDatabase.cs" />
+    <Compile Include="Databases\SQLite\SQLiteDatabase.cs" />
+    <Compile Include="DataTemplateSelectors\ComboBoxTemplateSelector.cs" />
+    <Compile Include="DataTemplateSelectors\ZapDataGrid.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helpers\CollectionHelpers.cs" />
+    <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\ScreenHelpers.cs" />
+    <Compile Include="Libraries\AsyncObservableCollection.cs" />
+    <Compile Include="Libraries\BindingProxy.cs" />
+    <Compile Include="Libraries\ComparerWithConverter.cs" />
+    <Compile Include="Libraries\DeferredAction.cs" />
+    <Compile Include="Libraries\DispatcherSynchronizeInvoke.cs" />
+    <Compile Include="Libraries\ExpressionUtilities.cs" />
+    <Compile Include="Libraries\IExecuteWithObject.cs" />
+    <Compile Include="Libraries\IExecuteWithObjectAndResult.cs" />
+    <Compile Include="Libraries\LoggerLib\CsvPatternLayout.cs" />
+    <Compile Include="Libraries\LoggerLib\CsvTextWriter.cs" />
+    <Compile Include="Libraries\LoggerLib\EndRowConverter.cs" />
+    <Compile Include="Libraries\LoggerLib\Logger.cs" />
+    <Compile Include="Libraries\LoggerLib\LoggerSettings.cs" />
+    <Compile Include="Libraries\LoggerLib\NewFieldConverter.cs" />
+    <Compile Include="Libraries\NativeMethods.cs" />
+    <Compile Include="Libraries\ConsoleProgressBar.cs" />
+    <Compile Include="Libraries\SolidColorBrushComparer.cs" />
+    <Compile Include="Libraries\SortAdorner.cs" />
+    <Compile Include="Libraries\TaskCompletionNotifier.cs" />
+    <Compile Include="Libraries\ObservableObject.cs" />
+    <Compile Include="Libraries\RelayCommand.cs" />
+    <Compile Include="Libraries\RelayCommandGeneric.cs" />
+    <Compile Include="Libraries\WeakAction.cs" />
+    <Compile Include="Libraries\WeakActionGeneric.cs" />
+    <Compile Include="Libraries\WeakFunc.cs" />
+    <Compile Include="Libraries\WeakFuncGeneric.cs" />
+    <Compile Include="SingleInstanceApplication\ApplicationInstanceManager.cs" />
+    <Compile Include="TemplateSelector\ComboBoxTemplateSelector.cs" />
+    <Compile Include="TemplateSelector\ComboBoxTemplateSelectorExtension.cs" />
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Controls\Calendar\Common\Appointment.cs" />
+    <Compile Include="Controls\Calendar\Common\BindableObject.cs" />
+    <Compile Include="Controls\Calendar\Common\Filters.cs" />
+    <Compile Include="Controls\Calendar\Controls\CalendarAppointmentItem.cs" />
+    <Compile Include="Controls\Calendar\Controls\CalendarDay.cs" />
+    <Compile Include="Controls\Calendar\Controls\CalendarDayHeader.cs" />
+    <Compile Include="Controls\Calendar\Controls\CalendarLedger.cs" />
+    <Compile Include="Controls\Calendar\Controls\CalendarLedgerItem.cs" />
+    <Compile Include="Controls\Calendar\Controls\CalendarTimeSlotItem.cs" />
+    <Compile Include="Controls\Calendar\Controls\TimeSlotPanel.cs" />
+    <Compile Include="Controls\Calendar\Controls\ZapCalendar.cs" />
+    <Compile Include="Controls\ZapGridViewColumn.cs" />
+    <Compile Include="Controls\ZapListView.cs" />
+    <Page Include="Themes\ZapScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapCalendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapLoadingIndicator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapMenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapScrollBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapTabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapTabItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapTabItemAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ZapWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ZapTabControl.cs" />
+    <Compile Include="Controls\ZapTabItem.cs" />
+    <Compile Include="Converters\ConverterBase.cs" />
+    <Compile Include="Converters\TitledConverter.cs" />
+    <Compile Include="Databases\ModelBase.cs" />
+    <Compile Include="Databases\ODBC\OdbcDatabase.cs" />
+    <Compile Include="SingleInstanceApplication\InstanceProxy.cs" />
+    <Compile Include="Libraries\Extensions.cs" />
+    <Compile Include="Helpers\VisualTreeHelpers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.VersionCheckAnalyzer.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.0.0\analyzers\dotnet\Microsoft.CodeAnalysis.VersionCheckAnalyzer.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.3.0.0\analyzers\dotnet\cs\Humanizer.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.3.0.0\analyzers\dotnet\cs\Microsoft.CodeQuality.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.3.0.0\analyzers\dotnet\cs\Microsoft.CodeQuality.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.3.0.0\analyzers\dotnet\cs\Microsoft.NetCore.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.3.0.0\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.3.0.0\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.3.0.0\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Next.png" />
+    <Resource Include="Images\Previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\exclamation.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.0.0\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.0.0\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeQuality.Analyzers.3.0.0\build\Microsoft.CodeQuality.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeQuality.Analyzers.3.0.0\build\Microsoft.CodeQuality.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetCore.Analyzers.3.0.0\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetCore.Analyzers.3.0.0\build\Microsoft.NetCore.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.3.0.0\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.3.0.0\build\Microsoft.NetFramework.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.0.0\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.0.0\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
+  </Target>
+</Project>
