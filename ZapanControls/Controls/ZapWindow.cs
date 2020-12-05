@@ -374,15 +374,15 @@ namespace ZapanControls.Controls
             {
                 Screen currentScreen = ScreenHelpers.GetCurrentScreen(this);
 
-                this.Left = ((currentScreen.WorkingArea.Width - this.ActualWidth) / 2) + currentScreen.WorkingArea.X;
-                this.Top = ((currentScreen.WorkingArea.Height - this.ActualHeight) / 2) + currentScreen.WorkingArea.Y;
+                Left = ((currentScreen.WorkingArea.Width - ActualWidth) / 2) + currentScreen.WorkingArea.X;
+                Top = ((currentScreen.WorkingArea.Height - ActualHeight) / 2) + currentScreen.WorkingArea.Y;
             }
             else if (WindowStartupLocation == WindowStartupLocation.CenterOwner)
             {
                 if (Owner != null)
                 {
-                    this.Left = Owner.Left + (Owner.Width - this.ActualWidth) / 2;
-                    this.Top = Owner.Top + (Owner.Height - this.ActualHeight) / 2;
+                    Left = Owner.Left + (Owner.Width - ActualWidth) / 2;
+                    Top = Owner.Top + (Owner.Height - ActualHeight) / 2;
                 }
             }
         }
@@ -397,7 +397,7 @@ namespace ZapanControls.Controls
         protected override void OnContentRendered(EventArgs e)
         {
             // Permet d'éviter les bordures noires lors de la création d'une nouvelle fenêtre
-            this.InvalidateVisual();
+            InvalidateVisual();
 
             if (ComponentDispatcher.IsThreadModal)
                 if (Owner is ZapWindow win)
@@ -428,7 +428,7 @@ namespace ZapanControls.Controls
 
         protected override void OnActivated(EventArgs e)
         {
-            this.IsReady = true;
+            IsReady = true;
             base.OnActivated(e);
         }
 
