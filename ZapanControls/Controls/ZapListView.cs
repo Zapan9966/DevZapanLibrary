@@ -938,15 +938,14 @@ namespace ZapanControls.Controls
         /// <summary>
         /// Méthode qui gère le filtrage des éléments du <see cref="ZapListView"/>.
         /// </summary>
-        public void FilterListView(bool forceLoadingIndicatorStyle = false, bool showLoadingIndicator = true)
+        public async void FilterListView(bool forceLoadingIndicatorStyle = false, bool showLoadingIndicator = true)
         {
             if (_worker != null)
             {
                 _worker.CancelAsync();
-                while (_worker.IsBusy)
+                while (IsFiltering)
                 {
-                    Application.Current?.Dispatcher.Invoke(DispatcherPriority.Background,
-                        new Action(delegate { System.Threading.Thread.Sleep(100); }));
+                    await Task.Delay(100);
                 }
             }
 
@@ -1211,16 +1210,16 @@ namespace ZapanControls.Controls
                     VisualTreeHelpers.UpdateBinding(this, ItemsSourceProperty, items);
                 }
                 else
-                    DisableEnableSearchFields((_filtersDictionary?.Count ?? 0) > 0);
+                    DisableEnableSearchFields(_filtersDictionary?.Any() ?? false);
 
                 Refresh();
                 AfterFilteringFinished?.Invoke(this, e);
-
-                if ((bool)objects[1])
-                    ToggleLoadingScreen();
-
-                IsFiltering = false;
             }
+
+            if (_loadingGrid.Visibility == Visibility.Visible)
+                ToggleLoadingScreen();
+
+            IsFiltering = false;
         }
 
         /// <summary>
